@@ -32,7 +32,20 @@ public class Schedule {
     public boolean isMoviesDay(){
         return showDay.getDayOfMonth() == 1;
     }
-
+    
+    public boolean isMorningShow() {
+    	if(endTime != null) {
+    		return endTime.isBefore(LocalTime.of(8, 00));
+    	}
+    	return false;
+    }
+    
+    public boolean isLateShow() {
+    	if(startTime != null) {
+    		return startTime.isAfter(LocalTime.of(21, 00));
+    	}
+    	return false;
+    }
 
 
     public Integer getScheduleId() {
